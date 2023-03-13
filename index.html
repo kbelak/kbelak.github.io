@@ -11016,7 +11016,7 @@ test
             token[key] = params.substring(0, params.indexOf("&")-1)
             params = params.substring(params.indexOf("&")+1)
         }
-        document.getElementById("yes").innerHTML = token.stringify()
+        document.getElementById("yes").innerHTML = JSON.stringify(token)
         window.open("https://open.spotify.com/logout")
     }
 </script>
