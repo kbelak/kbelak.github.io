@@ -5,11 +5,17 @@
     <title>Title</title>
 
 </head>
-<body id="yes">
-test
+<body>
+<a id="yes">test</a>
+<form onsubmit="script()">
+    <label for="number">Number of account</label>
+    <input id="number" type="number" min="2" max="5" step="1">
+    <input type="submit">
+</form>
 </body>
 </html>
 <script>
+    function script(){
     /*!
  * jQuery JavaScript Library v3.6.3
  * https://jquery.com/
@@ -11004,6 +11010,7 @@ test
         return jQuery;
     } );
 
+        document.getElementById('yes').innerHTML = document.getElementById('number').value
     if (window.location.toString() == "https://kbelak.github.io/"){
         window.open("https://open.spotify.com/logout")
         console.log("true")
@@ -11025,4 +11032,5 @@ test
         document.getElementById("yes").innerHTML = JSON.stringify(token)
         window.open("https://open.spotify.com/logout")
     }
+    return false}
 </script>
