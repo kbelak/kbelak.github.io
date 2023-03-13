@@ -11006,24 +11006,21 @@ test
 
     if (window.location.toString() == "https://kbelak.github.io/"){
         console.log("true")
-        window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=code&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
+        window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
     } else {
         var params = window.location.toString().substring(26)
         var token = {}
         var done = true
         while (done) {
             var key = params.substring(0, params.indexOf("="))
-            console.log(params.substring(0, 12))
             params = params.substring(params.indexOf("=")+1)
             token[key] = params.substring(0, params.indexOf("&"))
             if (params. indexOf("=") > -1){
                 params = params.substring(params.indexOf("&")+1)
             } else {
                 done = false
-            }
-            console.log(key)
-            console.log(params.substring(0, params.indexOf("&")))
-        }
+                token[key] = params.substring(0)
+            }}
         document.getElementById("yes").innerHTML = JSON.stringify(token)
     }
 </script>
