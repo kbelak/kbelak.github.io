@@ -11004,8 +11004,9 @@ test
         return jQuery;
     } );
 
-    if (window.location === "https://kbelak.github.io"){
+    if (window.location.toString() == "https://kbelak.github.io"){
         window.location.create({url: "https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio", incognito: True})
+        console.log(window.location.toString())
     } else{
         document.getElementById("yes").innerHTML = new URLSearchParams(window.location.search).get("access_token")
     }
