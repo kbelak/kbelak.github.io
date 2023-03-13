@@ -11004,11 +11004,11 @@ test
         return jQuery;
     } );
 
-    if (window.location.toString() == "https://kbelak.github.io"){
+    if (window.location.toString() == "https://kbelak.github.io/"){
         console.log("true")
         window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
-    } else{
-
+    } else {
+        lo
         document.getElementById("yes").innerHTML = new URLSearchParams(window.location.search).get("access_token").toString()
         window.open("https://open.spotify.com/logout")
     }
