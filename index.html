@@ -11008,7 +11008,8 @@ test
         console.log("true")
         window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
     } else {
-        var params = window.location.substring(26)
+        var params = window.location
+        params = params.substring(26)
         var token = {}
         while (token.length > 6) {
             var key = params.substring(0, params.indexOf("=")-1)
