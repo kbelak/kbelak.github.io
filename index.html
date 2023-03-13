@@ -11011,11 +11011,12 @@
     } );
 
         document.getElementById('yes').innerHTML = document.getElementById('number').value
-    if (window.location.toString() == "https://kbelak.github.io/"){
         window.open("https://open.spotify.com/logout")
         console.log("true")
         window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
-    } else {
+
+    return false}
+    if (window.location.toString() != "https://kbelak.github.io/"){
         var params = window.location.toString().substring(26)
         var token = {}
         var done = true
@@ -11032,5 +11033,4 @@
         document.getElementById("yes").innerHTML = JSON.stringify(token)
         window.open("https://open.spotify.com/logout")
     }
-    return false}
 </script>
