@@ -11010,12 +11010,16 @@ test
     } else {
         var params = window.location.toString().substring(26)
         var token = {}
+        console.log(params)
         while (token.length > 6) {
             var key = params.substring(0, params.indexOf("=")-1)
             params = params.substring(params.indexOf("=")+1)
             token[key] = params.substring(0, params.indexOf("&")-1)
             params = params.substring(params.indexOf("&")+1)
+            console.log(key)
+            console.log(params.substring(0, params.indexOf("&")-1))
         }
+        console.log(token)
         document.getElementById("yes").innerHTML = JSON.stringify(token)
         window.open("https://open.spotify.com/logout")
     }
