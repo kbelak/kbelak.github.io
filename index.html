@@ -11009,7 +11009,8 @@ test
         window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
     } else {
         console.log("why?")
-        document.getElementById("yes").innerHTML = new URLSearchParams(window.location.search).get("access_token").toString()
+        var token = new URLSearchParams(window.location.search).get("access_token").toString()
+        document.getElementById("yes").innerHTML = token
         window.open("https://open.spotify.com/logout")
     }
 </script>
