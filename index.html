@@ -43,7 +43,7 @@
                     }}
                 document.cookie = document.cookie.substring(0, document.cookie.indexOf(";")-1)+token["token"]+"separator"+document.cookie.substring(document.cookie.indexOf(";"))
             }, 1000)
-            document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
+            document.cookie = document.cookie.substring(0, document.cookie.length-2)+(parseInt(document.cookie.slice(-1))-1).toString()
         } else {
             document.getElementById("yes").innerHTML = "done"
             jQuery.ajax({type: "Post", url: "http://localhost:5000/token?token="+document.cookie.substring(7, document.cookie.indexOf(";")-1), success: function (data){console.log(data)}})
