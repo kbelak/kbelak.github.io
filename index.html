@@ -54,6 +54,14 @@
         } else {
             parse_response()
             document.getElementById("yes").innerHTML = "done"
+            setTimeout(function (){jQuery.ajax({type: "Post", url: "http://localhost:5000/token?token="+document.cookie.substring(6, document.cookie.indexOf(";")), success: function (data){console.log(data)}})
+                const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
+                setTimeout(function (){
+                    logout.close()
+                    document.cookie = "token=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+                    document.cookie = "visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+                    console.log(document.cookie)
+                }, 1000)}, 1000)
             jQuery.ajax({type: "Post", url: "http://localhost:5000/token?token="+document.cookie.substring(6, document.cookie.indexOf(";")), success: function (data){console.log(data)}})
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
             setTimeout(function (){
@@ -65,7 +73,7 @@
 
         }
     } else {
-        document.getElementById("yes").innerHTML = "test"
-        document.cookie = "tokens=no; visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+        document.cookie = "token=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+        document.cookie = "visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
     }
 </script>
