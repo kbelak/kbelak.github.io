@@ -55,7 +55,8 @@
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
             setTimeout(function (){
                 logout.close()
-                document.cookie = "tokens=no; visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+                document.cookie = "tokens=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+                document.cookie = "visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
                 console.log(document.cookie)
             }, 1000)
 
