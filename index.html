@@ -45,6 +45,7 @@
             }, 1000)
             document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
         } else {
+            console.log(document.cookie)
             document.getElementById("yes").innerHTML = "done"
             jQuery.ajax({type: "Post", url: "http://localhost:5000/token?token=randomshit", success: function (data){console.log(data)}})
             document.cookie = "vis=no; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
