@@ -19,12 +19,14 @@
     function set(){
         document.cookie = "visits="+(parseInt(document.getElementById("number").value)-1).toString()
         window.open("https://open.spotify.com/logout")
+        await new Promise(r => setTimeout(r, 1000))
         window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
         document.getElementById("yes").innerHTML = "test"
     }
     if (document.cookie.includes("visits")){
         if (parseInt(document.cookie.slice(-1)) > 1){
             window.open("https://open.spotify.com/logout")
+            await new Promise(r => setTimeout(r, 1000))
             document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
             window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
             var params = window.location.toString().substring(26)
