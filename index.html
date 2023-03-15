@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<a id="yes">test</a>
+<a id="yes">How many accounts would you like to mix?</a>
 <form onsubmit="set(); return false">
     <label for="number">Number of account</label>
     <input id="number" type="number" min="2" max="5" step="1">
@@ -23,6 +23,7 @@
         setTimeout(function (){window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
             document.getElementById("yes").innerHTML = "test"
             logout.close()
+            window.close()
         }, 1000)
     }
     function parse_response() {
@@ -43,6 +44,14 @@
         document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";"))+token["access_token"]+"separator"
     }
     if (document.cookie.includes("visits")){
+        if (window.location.toString().length > 27){
+            document.getElementById("yes").innerHTML = "Sorry, an error has occurred. The page will now reload in 5 seconds. Please try again from the beginning."
+            setTimeout(function (){
+                document.cookie = "token=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+                document.cookie = "visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+                window.location.reload()
+            }, 5)
+        }
         if (parseInt(document.cookie.slice(-1)) > 0){
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
             setTimeout(function (){
@@ -50,6 +59,7 @@
                 window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
                 parse_response()
                 document.cookie = "visits="+(parseInt(document.cookie.slice(7))-1).toString()
+                window.close()
             }, 1000)
         } else {
             parse_response()
