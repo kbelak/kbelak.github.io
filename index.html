@@ -45,7 +45,7 @@
                         token[key] = params.substring(0)
                     }}
                 console.log(token)
-                document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";"))+token["token"]+"separator"
+                document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";"))+token["access_token"]+"separator"
                 document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
                 console.log(document.cookie)
             }, 1000)
@@ -53,8 +53,11 @@
             document.getElementById("yes").innerHTML = "done"
             jQuery.ajax({type: "Post", url: "http://localhost:5000/token?token="+document.cookie.substring(6, document.cookie.indexOf(";")-1), success: function (data){console.log(data)}})
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
-            setTimeout(function (){logout.close()}, 1000)
-            document.cookie = "tokens=no; visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+            setTimeout(function (){
+                logout.close()
+                document.cookie = "tokens=no; visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+                console.log(document.cookie)
+            }, 1000)
 
         }
     } else {
