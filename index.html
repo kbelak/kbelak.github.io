@@ -25,6 +25,26 @@
             logout.close()
         }, 1000)
     }
+    function parse_response(){
+        var params = window.location.toString().substring(26)
+        var token = {}
+        var done = true
+        while (done) {
+            var key = params.substring(0, params.indexOf("="))
+            params = params.substring(params.indexOf("=")+1)
+            token[key] = params.substring(0, params.indexOf("&"))
+            if (params. indexOf("=") > -1){
+                params = params.substring(params.indexOf("&")+1)
+            } else {
+                done = false
+                token[key] = params.substring(0)
+            }}
+        console.log(token)
+        document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";"))+token["access_token"]+"separator"
+        console.log(document.cookie.slice(-1))
+        document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
+        console.log(document.cookie)
+    }
     if (document.cookie.includes("visits")){
         if (parseInt(document.cookie.slice(-1)) > 0){
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
