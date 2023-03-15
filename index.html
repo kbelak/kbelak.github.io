@@ -41,8 +41,11 @@
                         done = false
                         token[key] = params.substring(0)
                     }}
+                console.log(document.cookie)
                 document.cookie = document.cookie.substring(0, document.cookie.indexOf(";")-1)+token["token"]+"separator"+document.cookie.substring(document.cookie.indexOf(";"))
+                console.log(document.cookie)
                 document.cookie = document.cookie.substring(0, document.cookie.length-2)+(parseInt(document.cookie.slice(-1))-1).toString()
+                console.log(document.cookie)
             }, 1000)
         } else {
             document.getElementById("yes").innerHTML = "done"
