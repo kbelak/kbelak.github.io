@@ -46,6 +46,7 @@
                     }}
                 console.log(token)
                 document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";"))+token["access_token"]+"separator"
+                console.log(parseInt(document.cookie.slice(-1))-1)
                 document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
                 console.log(document.cookie)
             }, 1000)
