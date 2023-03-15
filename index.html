@@ -49,9 +49,7 @@
                 logout.close()
                 window.open("https://accounts.spotify.com/authorize?client_id=bc084485fa444ce39a61f281c1ecaf59&response_type=token&redirect_uri=https%3A%2F%2Fkbelak%2Egithub%2Eio")
                 parse_response()
-                console.log(document.cookie.slice(-1))
-                console.log(document.cookie)
-                document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
+                document.cookie = "visits="+(parseInt(document.cookie.slice(7))-1).toString()
             }, 1000)
         } else {
             parse_response()
