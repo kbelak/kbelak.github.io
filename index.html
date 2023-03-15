@@ -45,7 +45,7 @@
                         token[key] = params.substring(0)
                     }}
                 console.log(token)
-                document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";")-1)+token["token"]+"separator"
+                document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";"))+token["token"]+"separator"
                 console.log(document.cookie)
             }, 1000)
             document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
