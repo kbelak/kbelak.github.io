@@ -44,13 +44,13 @@
         document.cookie = "token="+document.cookie.substring(6, document.cookie.indexOf(";"))+token["access_token"]+"separator"
     }
     if (document.cookie.includes("visits")){
-        if (window.location.toString().length > 27){
+        if (window.location.toString().length < 27){
             document.getElementById("yes").innerHTML = "Sorry, an error has occurred. The page will now reload in 5 seconds. Please try again from the beginning."
             setTimeout(function (){
                 document.cookie = "token=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
                 document.cookie = "visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
                 window.location.reload()
-            }, 5)
+            }, 5000)
         }
         if (parseInt(document.cookie.slice(-1)) > 0){
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
