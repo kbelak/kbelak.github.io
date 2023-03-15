@@ -41,19 +41,18 @@
                         done = false
                         token[key] = params.substring(0)
                     }}
-                document.cookie = document.cookie.substring(0, document.cookie.indexOf(";")-1)+token["token"]+document.cookie.substring(document.cookie.indexOf(";"))
+                document.cookie = document.cookie.substring(0, document.cookie.indexOf(";")-1)+token["token"]+"separator"+document.cookie.substring(document.cookie.indexOf(";"))
             }, 1000)
             document.cookie = "visits="+(parseInt(document.cookie.slice(-1))-1).toString()
         } else {
             document.getElementById("yes").innerHTML = "done"
-            jQuery.ajax({type: "Post", url: "http://localhost:5000/token?token=randomshit", success: function (data){console.log(data)}})
+            jQuery.ajax({type: "Post", url: "http://localhost:5000/token?token="+document.cookie.substring(7, document.cookie.indexOf(";")-1), success: function (data){console.log(data)}})
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
             setTimeout(function (){logout.close()}, 1000)
             document.cookie = "tokens=no; visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
-            console.log(document.cookie)
         }
     } else {
         document.getElementById("yes").innerHTML = "test"
-        document.cookie = "visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+        document.cookie = "tokens=no; visits=no; expires=Thu, 01 Jan 1970 00:00:00 UTC"
     }
 </script>
