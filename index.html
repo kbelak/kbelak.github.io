@@ -23,7 +23,7 @@
             document.getElementById("yes").innerHTML = "test"}, 1000)
     }
     if (document.cookie.includes("visits")){
-        if (parseInt(document.cookie.slice(-1)) > 1){
+        if (parseInt(document.cookie.slice(-1)) > 0){
             const logout = window.open("https://open.spotify.com/logout", "Logout", 'width=700,height=500,top=40,left=40')
             setTimeout(function (){
                 logout.close()
